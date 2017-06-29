@@ -1,7 +1,8 @@
 package slipp.web;
 
-
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,13 +12,15 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.junit4.SpringRunner;
+import slipp.domain.User;
 
 import static io.restassured.RestAssured.given;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class HomeControllerTest {
-    private Logger log = LoggerFactory.getLogger(HomeControllerTest.class);
+@Slf4j
+public class ApiUserControllerTest {
+
 
     @Value("${local.server.port}")
     private int serverPort;
@@ -29,13 +32,18 @@ public class HomeControllerTest {
     }
 
     @Test
-    public void home() throws Exception {
-        String body = given()
-        .when()
-            .get("/")
-        .then()
-            .statusCode(HttpStatus.OK.value())
-                .extract().asString();
+    public void create() throws Exception {
+        User user = new User("userId", "password", "javajigi@slipp.net");
+        String body =
+                given()
+                    .contentType(ContentType.JSON)
+                    .body(user)
+                .when()
+                    .post("/api/users")
+                .then()
+                    .statusCode(HttpStatus.CREATED.value())
+                        .extract().asString();
+
         log.debug("body : {}", body);
     }
 }
