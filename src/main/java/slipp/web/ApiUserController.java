@@ -1,9 +1,8 @@
 package slipp.web;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 import slipp.domain.User;
 
 @RestController
@@ -11,7 +10,8 @@ import slipp.domain.User;
 @Slf4j
 public class ApiUserController {
     @PostMapping("")
-    public User create(User user) {
+    @ResponseStatus(HttpStatus.CREATED)
+    public User create(@RequestBody User user) {
         return user;
     }
 }

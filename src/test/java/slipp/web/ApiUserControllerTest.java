@@ -20,8 +20,6 @@ import static io.restassured.RestAssured.given;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Slf4j
 public class ApiUserControllerTest {
-
-
     @Value("${local.server.port}")
     private int serverPort;
 
