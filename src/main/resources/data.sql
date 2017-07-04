@@ -1,0 +1,1 @@
+INSERT INTO USER (user_id, password, email) VALUES ('javajigi', 'test', 'javajigi@slipp.net');
