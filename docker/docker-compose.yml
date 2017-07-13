@@ -9,4 +9,22 @@ services:
     ports:
       - "80:80"
   jwp-trello:
+    depends_on:
+      - trello-db
     image: jwp-trello:latest
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+    links:
+      - trello-db:trello-db
+  trello-db:
+    image: mysql:latest
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_general_ci --init-connect='SET NAMES UTF8;' --init_connect='SET collation_connection = utf8_general_ci' --innodb-flush-log-at-trx-commit=0
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=trello
+      - MYSQL_USER=trello
+      - MYSQL_PASSWORD=password
+    volumes:
+      - mysql-data:/var/lib/mysql
+volumes:
+  mysql-data:
