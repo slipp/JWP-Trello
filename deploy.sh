@@ -1,13 +1,31 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-pkill -9 -f jwp-trello
+git fetch
+master=$(git rev-parse master)
+remote=$(git rev-parse origin/master)
 
-./gradlew clean build
-echo "build successful!"
+#if [[ $master == $remote ]]; then
+#    echo "[$(date)] Nothing to do"
+#    exit 0
+#fi
 
-cd build/libs
+PROJECT_NAME="jwp-trello"
+REVISION_NO=$(git rev-parse --short HEAD)
 
-java -Dserver.port=8000 -jar jwp-trello-1.0.0.jar >> trello.log 2>&1 &
+echo "latest revision no : [$REVISION_NO]"
 
-echo "started server!"
+echo "build trello image"
+
+docker tag $PROJECT_NAME:latest $PROJECT_NAME:$REVISION_NO
+docker rmi $PROJECT_NAME:latest
+
+./gradlew clean buildDocker
+
+cd docker
+
+echo "current dir : $(pwd)"
+
+docker-compose up --build -d
+
+
 
