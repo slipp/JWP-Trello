@@ -29,5 +29,9 @@ docker-compose -p trello down
 
 docker-compose -p trello up --build -d
 
+cd ..
+
+./gradlew sonarqube
+
 
 
