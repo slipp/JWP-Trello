@@ -25,6 +25,8 @@ cd docker
 
 echo "current dir : $(pwd)"
 
+docker-compose -p trello down
+
 docker-compose -p trello up --build -d
 
 
