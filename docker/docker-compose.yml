@@ -1,22 +1,22 @@
 version: '3'
 services:
-  nginx:
+  web:
     depends_on:
-      - jwp-trello
+      - app
     build: ./nginx
     links:
-      - jwp-trello
+      - app
     ports:
       - "80:80"
-  jwp-trello:
+  app:
     depends_on:
-      - trello-db
+      - db
     image: jwp-trello:latest
     environment:
       SPRING_PROFILES_ACTIVE: dev
     links:
-      - trello-db:trello-db
-  trello-db:
+      - db:db
+  db:
     image: mysql:latest
     command: mysqld --character-set-server=utf8 --collation-server=utf8_general_ci --init-connect='SET NAMES UTF8;' --init_connect='SET collation_connection = utf8_general_ci' --innodb-flush-log-at-trx-commit=0
     environment:
