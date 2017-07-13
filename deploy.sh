@@ -21,6 +21,8 @@ docker rmi $PROJECT_NAME:latest
 
 ./gradlew clean buildDocker
 
+./gradlew sonarqube
+
 cd docker
 
 echo "current dir : $(pwd)"
@@ -28,10 +30,6 @@ echo "current dir : $(pwd)"
 docker-compose -p trello down
 
 docker-compose -p trello up --build -d
-
-cd ..
-
-./gradlew sonarqube
 
 
 

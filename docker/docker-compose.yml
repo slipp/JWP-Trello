@@ -34,41 +34,5 @@ services:
       retries: 120
     volumes:
       - mysql-data:/var/lib/mysql
-  sonarqube:
-    image: sonarqube:latest
-    depends_on:
-      - sonar-db
-    ports:
-      - "8002:9000"
-    links:
-      - sonar-db
-    environment:
-      - SONARQUBE_JDBC_URL=jdbc:mysql://sonar-db/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true
-      - SONARQUBE_JDBC_USERNAME=sonar
-      - SONARQUBE_JDBC_PASSWORD=password
-    volumes:
-      - sonarqube_conf:/opt/sonarqube/conf
-      - sonarqube_data:/opt/sonarqube/data
-      - sonarqube_extensions:/opt/sonarqube/extensions
-      - sonarqube_bundled-plugins:/opt/sonarqube/lib/bundled-plugins
-  sonar-db:
-    image: mysql:latest
-    command: mysqld --character-set-server=utf8 --collation-server=utf8_general_ci --init-connect='SET NAMES UTF8;' --init_connect='SET collation_connection = utf8_general_ci' --innodb-flush-log-at-trx-commit=0
-    environment:
-      - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_DATABASE=sonar
-      - MYSQL_USER=sonar
-      - MYSQL_PASSWORD=password
-    healthcheck:
-      test: "nc -z localhost 3306"
-      interval: 1s
-      retries: 120
-    volumes:
-      - sonar-mysql-data:/var/lib/mysql
 volumes:
   mysql-data:
-  sonar-mysql-data:
-  sonarqube_conf:
-  sonarqube_data:
-  sonarqube_extensions:
-  sonarqube_bundled-plugins:
