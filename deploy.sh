@@ -35,6 +35,6 @@ cd docker
 
 echo "current dir : $(pwd)"
 
-docker-compose -p trello down
+docker-compose -p trello -f common-services.yml -f docker-compose-dev.yml down
 
-docker-compose -p trello up --build -d
+docker-compose -p trello -f common-services.yml -f docker-compose-dev.yml up --build -d

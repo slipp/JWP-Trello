@@ -1,0 +1,10 @@
+version: '3'
+services:
+  web:
+    depends_on:
+      - app
+    build: ./nginx
+    links:
+      - app
+    ports:
+      - "80:80"

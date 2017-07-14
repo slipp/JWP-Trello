@@ -1,0 +1,12 @@
+version: '3'
+services:
+  app:
+    image: jwp-trello:latest
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+    healthcheck:
+      test: "curl -f http://localhost:8080"
+      interval: 1s
+      retries: 120
+    external_links:
+        - db:220.230.113.138

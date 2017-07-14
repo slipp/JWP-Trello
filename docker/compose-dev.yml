@@ -1,0 +1,30 @@
+version: '3'
+services:
+  app:
+    depends_on:
+      - db
+    image: jwp-trello:latest
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+    healthcheck:
+      test: "curl -f http://localhost:8080"
+      interval: 1s
+      retries: 120
+    links:
+      - db:db
+  db:
+    image: mysql:latest
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_general_ci --init-connect='SET NAMES UTF8;' --init_connect='SET collation_connection = utf8_general_ci' --innodb-flush-log-at-trx-commit=0
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=trello
+      - MYSQL_USER=trello
+      - MYSQL_PASSWORD=password
+    healthcheck:
+      test: "nc -z localhost 3306"
+      interval: 1s
+      retries: 120
+    volumes:
+      - mysql-data:/var/lib/mysql
+volumes:
+  mysql-data:
