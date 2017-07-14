@@ -8,5 +8,5 @@ services:
       test: "curl -f http://localhost:8080"
       interval: 1s
       retries: 120
-    external_links:
-        - db:220.230.113.138
+    extra_hosts:
+      - "db:10.33.13.62"
