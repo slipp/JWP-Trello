@@ -14,14 +14,22 @@ REVISION_NO=$(git rev-parse --short HEAD)
 
 echo "latest revision no : [$REVISION_NO]"
 
-echo "build trello image"
+echo "move latest image to old image"
 
 docker tag $PROJECT_NAME:latest $PROJECT_NAME:$REVISION_NO
 docker rmi $PROJECT_NAME:latest
 
-./gradlew clean buildDocker
+echo "build source, docker image"
 
-./gradlew sonarqube
+./gradlew clean build sonarqube buildDocker
+
+rc=$?
+
+if [[ $rc -ne 0 ]] ; then
+  echo "gradle build failed"; exit $rc
+fi
+
+echo "docker-compose restart"
 
 cd docker
 
@@ -30,6 +38,3 @@ echo "current dir : $(pwd)"
 docker-compose -p trello down
 
 docker-compose -p trello up --build -d
-
-
-
