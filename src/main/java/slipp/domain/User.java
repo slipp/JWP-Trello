@@ -3,12 +3,13 @@ package slipp.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
 @Entity
-public class User {
+public class User implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
