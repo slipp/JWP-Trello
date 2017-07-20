@@ -9,7 +9,7 @@ remote=$(git rev-parse origin/master)
 #    exit 0
 #fi
 
-PROJECT_NAME="jwp-trello"
+PROJECT_NAME="javajigi/jwp-trello"
 REVISION_NO=$(git rev-parse --short HEAD)
 
 echo "latest revision no : [$REVISION_NO]"
@@ -28,6 +28,8 @@ rc=$?
 if [[ $rc -ne 0 ]] ; then
   echo "gradle build failed"; exit $rc
 fi
+
+docker push $PROJECT_NAME
 
 echo "docker-compose restart"
 
