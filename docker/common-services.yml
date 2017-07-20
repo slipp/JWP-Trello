@@ -1,10 +1,8 @@
 version: '3'
 services:
-  web:
-    depends_on:
-      - app
-    build: ./nginx
-    links:
-      - app
+  web-proxy:
+    image: jwilder/nginx-proxy
     ports:
       - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro

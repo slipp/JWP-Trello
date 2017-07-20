@@ -29,7 +29,7 @@ if [[ $rc -ne 0 ]] ; then
   echo "gradle build failed"; exit $rc
 fi
 
-docker push $PROJECT_NAME
+# docker push $PROJECT_NAME
 
 echo "docker-compose restart"
 
@@ -37,6 +37,6 @@ cd docker
 
 echo "current dir : $(pwd)"
 
-docker-compose -p trello -f common-services.yml -f docker-compose-dev.yml down
+docker-compose -p trello -f common-services.yml -f compose-dev.yml down
 
-docker-compose -p trello -f common-services.yml -f docker-compose-dev.yml up --build -d
+docker-compose -p trello -f common-services.yml -f compose-dev.yml up -d

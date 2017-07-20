@@ -3,9 +3,13 @@ services:
   app:
     depends_on:
       - db
-    image: jwp-trello:latest
+    image: javajigi/jwp-trello:latest
+    ports:
+      - "8080"
     environment:
-      SPRING_PROFILES_ACTIVE: dev
+      - VIRTUAL_HOST=localhost
+      - VIRTUAL_PORT=8080
+      - SPRING_PROFILES_ACTIVE=dev
     healthcheck:
       test: "curl -f http://localhost:8080"
       interval: 1s
