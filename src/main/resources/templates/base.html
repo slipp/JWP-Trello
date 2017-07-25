@@ -1,0 +1,37 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>JWP Trello</title>
+    <link type="text/css" rel="stylesheet" href="/lib/materialize.min.css"  media="screen,projection"/>
+    {{#block "header"}}
+    {{/block}}
+</head>
+
+<body>
+<header>
+    <div class="header-wrapper">
+        <a href="/" class="brand-logo">JWP Trello</a>
+        {{#block "header-login"}}
+        {{#authorize "isAnonymous()"}}
+        <ul>
+            <li><a href="/users/login">login</a></li>
+        </ul>
+        {{/authorize}}
+        {{#authorize "isAuthenticated()"}}
+        <ul>
+            <li><a href="/users/logout">logout</a></li>
+        </ul>
+        {{/authorize}}
+        {{/block}}
+    </div>
+</header>
+
+{{#block "content"}}
+{{/block}}
+
+<script type="text/javascript" src="./lib/jquery-2.2.0.min.js"></script>
+<script type="text/javascript" src="./lib/materialize.min.js"></script>
+{{#block "footer" }}
+{{/block}}
+</body>
+</html>
