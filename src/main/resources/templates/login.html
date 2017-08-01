@@ -14,6 +14,7 @@
     <h4>Login To Trello</h4>
 
     <form class="login-form" action="/users/login" method="POST">
+        <input type="hidden" name="{{_csrf.parameterName}}" value="{{_csrf.token}}"/>
         <div class="row">
             <div class="input-field col s12">
                 <input id="email" type="email" class="validate" name="username">

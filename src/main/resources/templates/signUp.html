@@ -8,6 +8,7 @@
     <h4>Create a Account</h4>
 
     <form class="signup-form" method="POST">
+        <input type="hidden" name="{{_csrf.parameterName}}" value="{{_csrf.token}}"/>
         <div class="row">
             <div class="input-field col s12">
                 <input id="user_name" type="text" class="validate">
