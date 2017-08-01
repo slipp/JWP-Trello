@@ -2,26 +2,16 @@ package slipp.web;
 
 
 import io.restassured.RestAssured;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
-import org.springframework.test.context.junit4.SpringRunner;
+import slipp.base.BaseIntegrationTest;
 
 import static io.restassured.RestAssured.given;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class HomeControllerTest {
-    private Logger log = LoggerFactory.getLogger(HomeControllerTest.class);
-
-    @Value("${local.server.port}")
-    private int serverPort;
-
+@Slf4j
+public class HomeControllerTest extends BaseIntegrationTest {
     @Before
     public void setup() {
         log.debug("local server port : {}", serverPort);

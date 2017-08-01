@@ -5,22 +5,14 @@ import io.restassured.http.ContentType;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
-import org.springframework.test.context.junit4.SpringRunner;
+import slipp.base.BaseIntegrationTest;
 import slipp.domain.Authentication;
 
 import static io.restassured.RestAssured.given;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Slf4j
-public class ApiLoginControllerTest {
-    @Value("${local.server.port}")
-    private int serverPort;
-
+public class ApiLoginControllerTest extends BaseIntegrationTest {
     @Before
     public void setup() {
         log.debug("local server port : {}", serverPort);
