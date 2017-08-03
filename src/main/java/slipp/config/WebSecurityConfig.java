@@ -8,10 +8,17 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+import javax.annotation.Resource;
 
 public abstract class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     abstract void configureCsrf(HttpSecurity http) throws Exception;
+
+    @Resource(name = "customUserDetailsService")
+    private UserDetailsService userDetailsService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -19,6 +26,7 @@ public abstract class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
+                    .antMatchers("/api/admin").hasRole("ADMIN")
                     .antMatchers("/").permitAll()
                     .anyRequest().permitAll()
                 .and()
@@ -29,16 +37,14 @@ public abstract class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .permitAll()
                 .and()
                     .logout()
-                    .logoutUrl("/users/logout")
+                    .logoutRequestMatcher(new AntPathRequestMatcher("/users/logout"))
                     .logoutSuccessUrl("/")
                     .permitAll();
     }
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .inMemoryAuthentication()
-                .withUser("user@slipp.net").password("password").roles("USER");
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService);
     }
 
     @Configuration
