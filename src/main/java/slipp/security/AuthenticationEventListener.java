@@ -35,6 +35,8 @@ public class AuthenticationEventListener {
         log.debug("authentication details : {}", map);
 
         UserDetails userDetails = getUser(map);
+
+//        SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(user, user.getPassword(), user.getAuthorities()));
     }
 
     private UserDetails getUser(Map<String, Object> map) {
