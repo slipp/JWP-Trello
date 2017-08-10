@@ -2,6 +2,7 @@ package slipp.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -49,6 +50,7 @@ public abstract class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Configuration
     @EnableWebSecurity
+    @EnableOAuth2Sso
     @Profile({"local", "dev", "prod"})
     @Slf4j
     static class NotTestWebSecurityConfig extends WebSecurityConfig {
@@ -60,6 +62,7 @@ public abstract class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Configuration
     @EnableWebSecurity
+    @EnableOAuth2Sso
     @Profile("test")
     @Slf4j
     static class TestWebSecurityConfig extends WebSecurityConfig {
