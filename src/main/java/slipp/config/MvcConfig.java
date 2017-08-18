@@ -14,7 +14,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import com.github.jknack.handlebars.springmvc.HandlebarsViewResolver;
 
-import slipp.security.LoginUserHandlerMethodArgumentResolver;
+import slipp.auth.service.LoginUserHandlerMethodArgumentResolver;
 import slipp.web.helpers.SpringSecurityHelper;
 import slipp.web.interceptor.AuthenticationInterceptor;
 

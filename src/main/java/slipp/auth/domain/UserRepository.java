@@ -1,4 +1,4 @@
-package slipp.user;
+package slipp.auth.domain;
 
 import org.springframework.data.repository.CrudRepository;
 

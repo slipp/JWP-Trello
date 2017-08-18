@@ -1,4 +1,4 @@
-package slipp.web;
+package slipp.board.web;
 
 import java.util.HashMap;
 import java.util.Map;

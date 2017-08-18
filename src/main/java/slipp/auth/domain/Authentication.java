@@ -1,4 +1,4 @@
-package slipp.user;
+package slipp.auth.domain;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

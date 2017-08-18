@@ -13,8 +13,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
-import slipp.user.User;
-import slipp.user.UserRepository;
+import slipp.auth.domain.User;
+import slipp.auth.domain.UserRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)

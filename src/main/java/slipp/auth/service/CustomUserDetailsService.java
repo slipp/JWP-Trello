@@ -1,4 +1,4 @@
-package slipp.security;
+package slipp.auth.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,8 +16,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
-import slipp.user.Role;
-import slipp.user.UserRepository;
+import slipp.auth.domain.Role;
+import slipp.auth.domain.UserRepository;
 
 @Slf4j
 @Service("customUserDetailsService")
@@ -30,13 +30,13 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
         log.debug("load username : {}", username);
-        slipp.user.User user = userRepository.findByEmail(username);
+        slipp.auth.domain.User user = userRepository.findByEmail(username);
         log.debug("loaded User : {}", user);
         List<GrantedAuthority> authorities = buildUserAuthority(user.getRoles());
         return buildUserForAuthentication(user, authorities);
     }
 
-    private User buildUserForAuthentication(slipp.user.User user, List<GrantedAuthority> authorities) {
+    private User buildUserForAuthentication(slipp.auth.domain.User user, List<GrantedAuthority> authorities) {
         return new User(user.getEmail(), user.getPassword(),
                 true, true, true, true, authorities);
     }

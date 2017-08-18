@@ -1,8 +1,13 @@
-package slipp.user;
+package slipp.auth.service;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+
+import slipp.auth.domain.Authentication;
+import slipp.auth.domain.UnAuthenticationException;
+import slipp.auth.domain.User;
+import slipp.auth.domain.UserRepository;
 
 @Service
 public class UserService {

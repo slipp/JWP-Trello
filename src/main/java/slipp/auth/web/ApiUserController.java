@@ -1,4 +1,4 @@
-package slipp.web;
+package slipp.auth.web;
 
 import javax.annotation.Resource;
 
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.extern.slf4j.Slf4j;
-import slipp.user.User;
-import slipp.user.UserRepository;
+import slipp.auth.domain.User;
+import slipp.auth.domain.UserRepository;
 
 @RestController
 @RequestMapping("/api/users")

@@ -1,8 +1,8 @@
-package slipp.board;
+package slipp.board.domain;
 
 import javax.persistence.Entity;
 
-import slipp.user.User;
+import slipp.auth.domain.User;
 import support.domain.AbstractUserEntity;
 
 @Entity

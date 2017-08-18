@@ -1,4 +1,4 @@
-package slipp.security;
+package slipp.auth.service;
 
 import java.util.Optional;
 

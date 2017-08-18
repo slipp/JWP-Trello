@@ -1,4 +1,4 @@
-package slipp.board;
+package slipp.board.domain;
 
 import org.springframework.data.repository.CrudRepository;
 

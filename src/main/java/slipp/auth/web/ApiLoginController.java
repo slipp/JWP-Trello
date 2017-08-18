@@ -1,4 +1,4 @@
-package slipp.web;
+package slipp.auth.web;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import slipp.user.Authentication;
-import slipp.user.User;
-import slipp.user.UserService;
+import slipp.auth.domain.Authentication;
+import slipp.auth.domain.User;
+import slipp.auth.service.UserService;
 
 @RestController
 @RequestMapping("/api")

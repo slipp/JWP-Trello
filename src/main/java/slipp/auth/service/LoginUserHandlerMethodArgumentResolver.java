@@ -1,4 +1,4 @@
-package slipp.security;
+package slipp.auth.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
@@ -8,7 +8,7 @@ import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
 
-import slipp.user.UserRepository;
+import slipp.auth.domain.UserRepository;
 import support.domain.UnAuthorizedException;
 
 @Component

@@ -1,4 +1,4 @@
-package slipp.web;
+package slipp.auth.web;
 
 import static io.restassured.RestAssured.given;
 
@@ -9,8 +9,8 @@ import org.springframework.http.HttpStatus;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import lombok.extern.slf4j.Slf4j;
+import slipp.auth.domain.User;
 import slipp.base.BaseIntegrationTest;
-import slipp.user.User;
 
 @Slf4j
 public class ApiUserControllerTest extends BaseIntegrationTest {
