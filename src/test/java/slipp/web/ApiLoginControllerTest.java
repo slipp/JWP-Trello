@@ -1,15 +1,16 @@
 package slipp.web;
 
-import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
-import lombok.extern.slf4j.Slf4j;
+import static io.restassured.RestAssured.given;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
+
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import lombok.extern.slf4j.Slf4j;
 import slipp.base.BaseIntegrationTest;
 import slipp.domain.Authentication;
-
-import static io.restassured.RestAssured.given;
 
 @Slf4j
 public class ApiLoginControllerTest extends BaseIntegrationTest {

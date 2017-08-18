@@ -1,18 +1,19 @@
 package slipp.security;
 
-import lombok.extern.slf4j.Slf4j;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
 import org.springframework.boot.autoconfigure.security.oauth2.resource.FixedPrincipalExtractor;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.PrincipalExtractor;
 import org.springframework.context.event.EventListener;
 import org.springframework.security.authentication.event.InteractiveAuthenticationSuccessEvent;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
-import java.util.Map;
+import lombok.extern.slf4j.Slf4j;
 
 @Component
 @Slf4j

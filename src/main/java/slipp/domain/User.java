@@ -1,16 +1,29 @@
 package slipp.domain;
 
-import lombok.*;
-
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
 @Entity
 public class User implements Serializable {
+    private static final long serialVersionUID = 3707036525592329924L;
+
     @Id
     @GeneratedValue
     private Long id;

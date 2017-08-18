@@ -1,16 +1,18 @@
 package slipp.config;
 
-import com.github.jknack.handlebars.springmvc.HandlebarsViewResolver;
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+
+import com.github.jknack.handlebars.springmvc.HandlebarsViewResolver;
+
 import slipp.web.helpers.SpringSecurityHelper;
 import slipp.web.interceptor.AuthenticationInterceptor;
-
-import javax.annotation.PostConstruct;
 
 @Configuration
 public class MvcConfig extends WebMvcConfigurerAdapter {

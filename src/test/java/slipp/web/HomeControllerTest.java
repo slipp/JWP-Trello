@@ -1,14 +1,15 @@
 package slipp.web;
 
 
-import io.restassured.RestAssured;
-import lombok.extern.slf4j.Slf4j;
+import static io.restassured.RestAssured.given;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
-import slipp.base.BaseIntegrationTest;
 
-import static io.restassured.RestAssured.given;
+import io.restassured.RestAssured;
+import lombok.extern.slf4j.Slf4j;
+import slipp.base.BaseIntegrationTest;
 
 @Slf4j
 public class HomeControllerTest extends BaseIntegrationTest {
