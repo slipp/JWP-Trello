@@ -1,4 +1,4 @@
-package slipp.domain;
+package slipp.user;
 
 import java.io.Serializable;
 import java.util.Set;

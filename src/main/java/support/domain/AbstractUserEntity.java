@@ -4,7 +4,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 
-import slipp.domain.User;
+import slipp.user.User;
 
 @MappedSuperclass
 public class AbstractUserEntity extends AbstractEntity {

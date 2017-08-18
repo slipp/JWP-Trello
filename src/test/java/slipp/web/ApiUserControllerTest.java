@@ -10,7 +10,7 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import lombok.extern.slf4j.Slf4j;
 import slipp.base.BaseIntegrationTest;
-import slipp.domain.User;
+import slipp.user.User;
 
 @Slf4j
 public class ApiUserControllerTest extends BaseIntegrationTest {

@@ -1,4 +1,4 @@
-package slipp.domain;
+package slipp.user;
 
 public class UnAuthenticationException extends Exception {
     private static final long serialVersionUID = 2568164128597871381L;

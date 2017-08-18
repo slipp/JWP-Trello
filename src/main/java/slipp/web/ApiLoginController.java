@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import slipp.domain.Authentication;
-import slipp.domain.User;
-import slipp.service.UserService;
+import slipp.user.Authentication;
+import slipp.user.User;
+import slipp.user.UserService;
 
 @RestController
 @RequestMapping("/api")

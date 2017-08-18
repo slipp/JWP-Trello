@@ -8,8 +8,8 @@ import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
 
-import slipp.domain.User;
-import slipp.domain.UserRepository;
+import slipp.user.User;
+import slipp.user.UserRepository;
 import support.domain.UnAuthorizedException;
 
 @Component

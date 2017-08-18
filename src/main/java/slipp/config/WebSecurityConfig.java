@@ -28,6 +28,7 @@ public abstract class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                     .antMatchers("/api/admin").hasRole("ADMIN")
+                    .antMatchers("/api/boards").hasRole("USER")
                     .antMatchers("/").permitAll()
                     .anyRequest().permitAll()
                 .and()

@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.extern.slf4j.Slf4j;
 import slipp.board.Board;
 import slipp.board.BoardRepository;
-import slipp.domain.User;
 import slipp.security.LoginUser;
+import slipp.user.User;
 
 @RestController
 @RequestMapping("/api")

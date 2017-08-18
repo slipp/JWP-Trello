@@ -2,7 +2,7 @@ package slipp.board;
 
 import javax.persistence.Entity;
 
-import slipp.domain.User;
+import slipp.user.User;
 import support.domain.AbstractUserEntity;
 
 @Entity

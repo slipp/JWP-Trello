@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.extern.slf4j.Slf4j;
-import slipp.domain.User;
-import slipp.domain.UserRepository;
+import slipp.user.User;
+import slipp.user.UserRepository;
 
 @RestController
 @RequestMapping("/api/users")

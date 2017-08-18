@@ -1,4 +1,4 @@
-package slipp.domain;
+package slipp.user;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
