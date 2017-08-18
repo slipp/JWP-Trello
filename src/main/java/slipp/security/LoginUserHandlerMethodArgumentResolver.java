@@ -8,7 +8,6 @@ import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
 
-import slipp.user.User;
 import slipp.user.UserRepository;
 import support.domain.UnAuthorizedException;
 
@@ -25,12 +24,15 @@ public class LoginUserHandlerMethodArgumentResolver implements HandlerMethodArgu
     @Override
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
             NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
-        User user = userRepository.findByEmail(SecurityUtils.getUsername());
+        if (SecurityUtils.getUsername().isPresent()) {
+            return userRepository.findByEmail(SecurityUtils.getUsername().get());
+        }
+        
         LoginUser loginUser = parameter.getParameterAnnotation(LoginUser.class);
-        if (loginUser.required() && user == null) {
+        if (loginUser.required()) {
             throw new UnAuthorizedException("You're required Login!");
         }
         
-        return user;
+        return null;
     }
 }
