@@ -21,4 +21,14 @@ public class ApiBoardControllerTest extends BaseIntegrationTest {
             .then()
                 .statusCode(HttpStatus.CREATED.value());
     }
+    
+    @Test
+    public void delete() throws Exception {
+        create();
+        given_auth_json()
+            .when()
+                .delete("/api/boards/1")
+            .then()
+                .statusCode(HttpStatus.NO_CONTENT.value());
+    }
 }
