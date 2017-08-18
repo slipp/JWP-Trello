@@ -1,16 +1,20 @@
 package slipp.config;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import com.github.jknack.handlebars.springmvc.HandlebarsViewResolver;
 
+import slipp.security.LoginUserHandlerMethodArgumentResolver;
 import slipp.web.helpers.SpringSecurityHelper;
 import slipp.web.interceptor.AuthenticationInterceptor;
 
@@ -21,6 +25,9 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 
     @Autowired
     private SpringSecurityHelper springSecurityHelper;
+    
+    @Autowired
+    private LoginUserHandlerMethodArgumentResolver loginUserHandlerMethodArgumentResolver;
 
     @PostConstruct
     public void registerHelper() {
@@ -31,6 +38,11 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/users/loginForm").setViewName("login");
         registry.addViewController("/users/signUp").setViewName("signUp");
+    }
+    
+    @Override
+    public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
+        argumentResolvers.add(loginUserHandlerMethodArgumentResolver);
     }
 
     @Override

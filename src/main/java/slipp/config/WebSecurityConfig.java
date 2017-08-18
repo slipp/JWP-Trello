@@ -16,15 +16,15 @@ import lombok.extern.slf4j.Slf4j;
 
 public abstract class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    abstract void configureCsrf(HttpSecurity http) throws Exception;
+    abstract void configureProfile(HttpSecurity http) throws Exception;
 
     @Resource(name = "customUserDetailsService")
     private UserDetailsService userDetailsService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        configureCsrf(http);
-
+        configureProfile(http);
+        
         http
                 .authorizeRequests()
                     .antMatchers("/api/admin").hasRole("ADMIN")
@@ -55,7 +55,7 @@ public abstract class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Slf4j
     static class NotTestWebSecurityConfig extends WebSecurityConfig {
         @Override
-        void configureCsrf(HttpSecurity http) throws Exception {
+        void configureProfile(HttpSecurity http) throws Exception {
             log.info("enable csrf test profile");
         }
     }
@@ -67,9 +67,11 @@ public abstract class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Slf4j
     static class TestWebSecurityConfig extends WebSecurityConfig {
         @Override
-        void configureCsrf(HttpSecurity http) throws Exception {
+        void configureProfile(HttpSecurity http) throws Exception {
             log.info("disable csrf test profile");
             http.csrf().disable();
+            
+            http.httpBasic();
         }
     }
 }
