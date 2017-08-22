@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -50,6 +51,7 @@ public abstract class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Configuration
     @EnableWebSecurity
+    @EnableGlobalMethodSecurity(prePostEnabled = true)
     @EnableOAuth2Sso
     @Profile({"local", "dev", "prod"})
     @Slf4j
@@ -62,6 +64,7 @@ public abstract class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Configuration
     @EnableWebSecurity
+    @EnableGlobalMethodSecurity(prePostEnabled = true)
     @EnableOAuth2Sso
     @Profile("test")
     @Slf4j

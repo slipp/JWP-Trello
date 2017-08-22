@@ -23,6 +23,10 @@ public class AbstractUserEntity extends AbstractEntity {
     public User getWriter() {
         return writer;
     }
+    
+    public String getEmail() {
+        return writer.getEmail();
+    }
 
     public void loginUser(User loginUser) {
         this.writer = loginUser;

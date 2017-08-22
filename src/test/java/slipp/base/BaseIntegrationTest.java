@@ -39,4 +39,11 @@ public abstract class BaseIntegrationTest {
                     .auth().preemptive().basic(loginUser.getEmail(), loginUser.getPassword())
                     .contentType(ContentType.JSON);
     }
+    
+    protected RequestSpecification given_auth_json(String email) {
+        User user = userRepository.findByEmail(email);
+        return given()
+                    .auth().preemptive().basic(user.getEmail(), user.getPassword())
+                    .contentType(ContentType.JSON);
+    }
 }
